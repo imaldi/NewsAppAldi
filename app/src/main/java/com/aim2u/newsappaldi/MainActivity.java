@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.aim2u.newsappaldi.api.ApiClient;
@@ -64,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     mRecyclerView.setAdapter(mAdapter);
                     mAdapter.notifyDataSetChanged();
 
+                    initListener();
+
                 } else {
                     Toast.makeText(MainActivity.this,"No Result!",Toast.LENGTH_SHORT).show();
                 }
@@ -72,6 +76,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<News> call, Throwable t) {
 
+            }
+        });
+    }
+
+    private void initListener(){
+        mAdapter.setOnClickListener(new Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(MainActivity.this, NewsDetailActivity.class);
+
+                Article article = mArticles.get(position);
+                intent.putExtra("url", article.getUrl());
+                intent.putExtra("title",article.getTitle());
+                intent.putExtra("img",article.getUrlToImage());
+                intent.putExtra("date",article.getPublishedAt());
+                intent.putExtra("source",article.getSource().getName());
+                intent.putExtra("author",article.getAuthor());
+
+                startActivity(intent);
             }
         });
     }

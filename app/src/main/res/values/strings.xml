@@ -7,4 +7,6 @@
     <string name="desc">Desc</string>
     <string name="source">Source</string>
     <string name="time">Time</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="news_for_you">News for you</string>
 </resources>

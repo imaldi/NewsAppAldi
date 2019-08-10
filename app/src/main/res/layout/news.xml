@@ -16,6 +16,7 @@
         app:cardCornerRadius="18dp">
 
         <RelativeLayout
+            android:background="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -57,12 +58,12 @@
                 android:id="@+id/layoutDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/img"
+                android:layout_below="@id/img"
                 android:background="@drawable/round_white"
                 android:padding="5dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="50dp">
+                android:layout_marginTop="-50dp">
                 <ImageView
                     android:src="@drawable/ic_date"
                     android:layout_width="18dp"
